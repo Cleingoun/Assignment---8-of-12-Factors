@@ -1,7 +1,7 @@
-FROM maven:3.6.3-jdk-11 AS build
+FROM maven:3.8.4-openjdk-17 AS build
 WORKDIR /app
 COPY . .
-RUN mvn clean package -DskipTests
+RUN mvn clean package -p dev-f -Dmaven.skip.test=true
 
 FROM openjdk:11-jre-slim AS production
 WORKDIR /app
